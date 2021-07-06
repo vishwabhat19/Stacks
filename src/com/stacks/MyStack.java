@@ -3,7 +3,9 @@ package com.stacks;
 import java.util.EmptyStackException;
 
 public class MyStack<T> {
+	
 	private static class StackNode<T> {
+		
 		private T data;
 		private StackNode<T> next;
 		
@@ -16,23 +18,23 @@ public class MyStack<T> {
 	
 	public T pop() {
 		if(top == null) throw new EmptyStackException();
-		
 		T data = top.data;
 		top = top.next;
 		return data;
 	}
 	
 	public void push(T data) {
-		StackNode<T> t = new StackNode<T>(data);
-		t.next = top;
-		top = t;
+		StackNode<T> node = new StackNode<T>(data);
+		node.next = top;
+		top = node;
 	}
 	
 	public T peek() {
 		if(top == null) throw new EmptyStackException();
-		
 		return top.data;
 	}
 	
-	
+	public boolean isEmpty() {
+		return top == null;
+	}
 }
